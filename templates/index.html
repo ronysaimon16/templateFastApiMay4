@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>svm_clf HeartDisease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+
+</head>
+<body>
+    <h1>svm_clf Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="bmi">BMI:</label>
+        <input type="text" id="bmi" name="BMI" required><br><br>
+        
+        <label for="smoking">Smoking:</label>
+        <input type="text" id="smoking" name="Smoking" required><br><br>
+        
+        <label for="alcohol_drinking">Alcohol Drinking:</label>
+        <input type="text" id="alcohol_drinking" name="AlcoholDrinking" required><br><br>
+        
+        <label for="stroke">Stroke:</label>
+        <input type="text" id="stroke" name="Stroke" required><br><br>
+        
+        <label for="physical_health">Physical Health:</label>
+        <input type="number" id="physical_health" name="PhysicalHealth" required><br><br>
+        
+        <label for="mental_health">Mental Health:</label>
+        <input type="number" id="mental_health" name="MentalHealth" required><br><br>
+        
+        <label for="diff_walking">Difficulty Walking:</label>
+        <input type="text" id="diff_walking" name="DiffWalking" required><br><br>
+        
+        <label for="sex">Sex:</label>
+        <input type="text" id="sex" name="Sex" required><br><br>
+        
+        <label for="age_category">Age Category:</label>
+        <input type="text" id="age_category" name="AgeCategory" required><br><br>
+        
+        <label for="race">Race:</label>
+        <input type="text" id="race" name="Race" required><br><br>
+        
+        <label for="diabetic">Diabetic:</label>
+        <input type="text" id="diabetic" name="Diabetic" required><br><br>
+        
+        <label for="physical_activity">Physical Activity:</label>
+        <input type="text" id="physical_activity" name="PhysicalActivity" required><br><br>
+        
+        <label for="gen_health">General Health:</label>
+        <input type="text" id="gen_health" name="GenHealth" required><br><br>
+        
+        <label for="sleep_time">Sleep Time:</label>
+        <input type="number" id="sleep_time" name="SleepTime" required><br><br>
+        
+        <label for="asthma">Asthma:</label>
+        <input type="text" id="asthma" name="Asthma" required><br><br>
+        
+        <label for="kidney_disease">Kidney Disease:</label>
+        <input type="text" id="kidney_disease" name="KidneyDisease" required><br><br>
+        
+        <label for="skin_cancer">Skin Cancer:</label>
+        <input type="text" id="skin_cancer" name="SkinCancer" required><br><br>
+        
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
