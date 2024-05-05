@@ -29,5 +29,5 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
       with:
-        deploy_key: ${{ secrets.ACCESS_TOKEN }}  # Use a GitHub access token with repo permissions
-        publish_dir: ./static  # Change this to the directory where your static files are located
+        deploy_key: ${{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}}  # Use a GitHub access token with repo permissions
+        publish_dir: .templateFastApiMay4/static  # Change this to the directory where your static files are located
