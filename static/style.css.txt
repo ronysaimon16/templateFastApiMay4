@@ -1,16 +1,15 @@
-/* Set the background color of the body */
+
 body {
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
 }
 
-/* Style the h1 heading */
 h1 {
     color: #333;
     text-align: center;
 }
 
-/* Style the form inputs */
+
 input[type="text"], input[type="number"] {
     width: 100%;
     padding: 10px;
@@ -18,7 +17,7 @@ input[type="text"], input[type="number"] {
     box-sizing: border-box;
 }
 
-/* Style the submit button */
+
 input[type="submit"] {
     width: 100%;
     padding: 10px;
@@ -30,7 +29,7 @@ input[type="submit"] {
     cursor: pointer;
 }
 
-/* Style links */
+
 a {
     color: #007bff;
     text-decoration: none;
