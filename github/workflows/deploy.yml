@@ -1,30 +1,33 @@
-name: Deploy to Render
+name: Deploy FastAPI
+
 on:
   push:
     branches:
-      - main
+      - main  # Adjust this if you are using a different main branch name
 
 jobs:
   deploy:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Use windows-latest for Windows 10 Command Prompt
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          # Install any dependencies required for your application
-          npm install   # Example for Node.js application
-          pip install -r requirements.txt   # Example for Python application
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specify the Python version you're using
 
-      - name: Build application
-        run: |
-          # Build your application (e.g., compile code, bundle assets)
-          npm run build   # Example for building a Node.js application
-          # You may need to adjust this step based on your application's build process
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-      - name: Deploy to Render
-        run: |
-          # Use Render CLI or other deployment tools to deploy your application
-          render deploy --config render.yaml   # Example for deploying using Render CLI
-          # You'll need to replace 'render.yaml' with your actual Render configuration file name
+    - name: Start the FastAPI server
+      run: python -m uvicorn main:app --host 0.0.0.0 --port ${{ secrets.PORT }} &
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACCESS_TOKEN }}  # Use a GitHub access token with repo permissions
+        publish_dir: ./static  # Change this to the directory where your static files are located
