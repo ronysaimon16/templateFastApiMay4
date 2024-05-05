@@ -1,0 +1,33 @@
+name: Deploy FastAPI
+
+on:
+  push:
+    branches:
+      - main  # Adjust this if you are using a different main branch name
+
+jobs:
+  deploy:
+    runs-on: windows-latest  # Use windows-latest for Windows 10 Command Prompt
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specify the Python version you're using
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Start the FastAPI server
+      run: python -m uvicorn main:app --host 0.0.0.0 --port ${{ secrets.PORT }} &
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        deploy_key: ${{ secrets.ACCESS_TOKEN }}  # Use a GitHub access token with repo permissions
+        publish_dir: ./static  # Change this to the directory where your static files are located
