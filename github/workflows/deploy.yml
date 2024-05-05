@@ -1,0 +1,30 @@
+name: Deploy to Render
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          # Install any dependencies required for your application
+          npm install   # Example for Node.js application
+          pip install -r requirements.txt   # Example for Python application
+
+      - name: Build application
+        run: |
+          # Build your application (e.g., compile code, bundle assets)
+          npm run build   # Example for building a Node.js application
+          # You may need to adjust this step based on your application's build process
+
+      - name: Deploy to Render
+        run: |
+          # Use Render CLI or other deployment tools to deploy your application
+          render deploy --config render.yaml   # Example for deploying using Render CLI
+          # You'll need to replace 'render.yaml' with your actual Render configuration file name
